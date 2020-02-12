@@ -1,0 +1,164 @@
+Bottom: 3ae5f0678d4dcd78331e5b1a6a50750fc472ed1f
+Top:    dbb0a04a22665199f0107d52feb614697a23d5e4
+Author: scott snyder <sss@karma>
+Date:   2020-02-12 11:09:47 -0500
+
+Refresh of warn
+
+---
+
+diff --git a/src/Criteria/Crit2_HelixWithIP.cc b/src/Criteria/Crit2_HelixWithIP.cc
+index 0c8baf1..ba63ae0 100644
+--- a/src/Criteria/Crit2_HelixWithIP.cc
++++ b/src/Criteria/Crit2_HelixWithIP.cc
+@@ -84,7 +84,7 @@ bool Crit2_HelixWithIP::areCompatible( Segment* parent , Segment* child ) {
+ 
+          
+       }
+-      catch ( InvalidParameter ){
++      catch ( const InvalidParameter& ){
+          
+         
+       }
+diff --git a/src/Criteria/Crit3_2DAngleTimesR.cc b/src/Criteria/Crit3_2DAngleTimesR.cc
+index a70c962..a28284e 100644
+--- a/src/Criteria/Crit3_2DAngleTimesR.cc
++++ b/src/Criteria/Crit3_2DAngleTimesR.cc
+@@ -102,7 +102,7 @@ bool Crit3_2DAngleTimesR::areCompatible( Segment* parent , Segment* child ) {
+             if ( angleTimesR > _angleMax ) return false;
+             
+          }
+-         catch( InvalidParameter ){
++         catch( const InvalidParameter& ){
+             
+             
+          }
+diff --git a/src/Criteria/Crit3_3DAngleTimesR.cc b/src/Criteria/Crit3_3DAngleTimesR.cc
+index ff52c6f..b64d5eb 100644
+--- a/src/Criteria/Crit3_3DAngleTimesR.cc
++++ b/src/Criteria/Crit3_3DAngleTimesR.cc
+@@ -101,7 +101,7 @@ bool Crit3_3DAngleTimesR::areCompatible( Segment* parent , Segment* child ) {
+             if ( angleTimesR > _angleMax ) return false;
+             
+          }
+-         catch( InvalidParameter ){
++         catch( const InvalidParameter& ){
+             
+             
+          }
+diff --git a/src/Criteria/Crit3_IPCircleDist.cc b/src/Criteria/Crit3_IPCircleDist.cc
+index 2e2486d..fc02f59 100644
+--- a/src/Criteria/Crit3_IPCircleDist.cc
++++ b/src/Criteria/Crit3_IPCircleDist.cc
+@@ -61,7 +61,7 @@ bool Crit3_IPCircleDist::areCompatible( Segment* parent , Segment* child ) {
+          if ( circleDistToIP  < _distToCircleMin ) return false;
+ 
+       }
+-      catch ( InvalidParameter ){
++      catch ( const InvalidParameter& ){
+          
+          
+          if (_saveValues) _map_name_value["Crit3_IPCircleDist"] =  0.;
+diff --git a/src/Criteria/Crit3_IPCircleDistTimesR.cc b/src/Criteria/Crit3_IPCircleDistTimesR.cc
+index cbda61e..07c98c1 100644
+--- a/src/Criteria/Crit3_IPCircleDistTimesR.cc
++++ b/src/Criteria/Crit3_IPCircleDistTimesR.cc
+@@ -61,7 +61,7 @@ bool Crit3_IPCircleDistTimesR::areCompatible( Segment* parent , Segment* child )
+          if ( circleDistToIPTimesR  < _distToCircleMin ) return false;
+          
+       }
+-      catch ( InvalidParameter ){
++      catch ( const InvalidParameter& ){
+          
+          
+          if (_saveValues) _map_name_value["Crit3_IPCircleDistTimesR"] =  0.;
+diff --git a/src/Criteria/Crit3_PT.cc b/src/Criteria/Crit3_PT.cc
+index 7b22dad..a0aaf80 100644
+--- a/src/Criteria/Crit3_PT.cc
++++ b/src/Criteria/Crit3_PT.cc
+@@ -70,7 +70,7 @@ bool Crit3_PT::areCompatible( Segment* parent , Segment* child ) {
+ 
+          
+       }
+-      catch ( InvalidParameter ){
++      catch ( const InvalidParameter& ){
+          
+          if (_saveValues) _map_name_value["Crit3_PT"] =  0.;
+          
+diff --git a/src/Criteria/Crit3_PT_MV.cc b/src/Criteria/Crit3_PT_MV.cc
+index da92109..7932098 100644
+--- a/src/Criteria/Crit3_PT_MV.cc
++++ b/src/Criteria/Crit3_PT_MV.cc
+@@ -70,7 +70,7 @@ bool Crit3_PT_MV::areCompatible( Segment* parent , Segment* child ) {
+ 
+          
+       }
+-      catch ( InvalidParameter ){
++      catch ( const InvalidParameter& ){
+          
+          if (_saveValues) _map_name_value["Crit3_PT_MV"] =  0.;
+          
+diff --git a/src/Criteria/Crit4_3DAngleChangeNormed.cc b/src/Criteria/Crit4_3DAngleChangeNormed.cc
+index ade7136..8c06f4e 100644
+--- a/src/Criteria/Crit4_3DAngleChangeNormed.cc
++++ b/src/Criteria/Crit4_3DAngleChangeNormed.cc
+@@ -90,7 +90,7 @@ bool Crit4_3DAngleChangeNormed::areCompatible( Segment* parent , Segment* child
+          if ( ratioNormed < _changeMin ) return false;
+          
+       }
+-      catch ( InvalidParameter ){
++      catch ( const InvalidParameter& ){
+          
+          if (_saveValues) _map_name_value["Crit4_3DAngleChangeNormed"] = 0.;
+          
+diff --git a/src/Criteria/Crit4_DistOfCircleCenters.cc b/src/Criteria/Crit4_DistOfCircleCenters.cc
+index 2f0ecba..dcaa175 100644
+--- a/src/Criteria/Crit4_DistOfCircleCenters.cc
++++ b/src/Criteria/Crit4_DistOfCircleCenters.cc
+@@ -79,7 +79,7 @@ bool Crit4_DistOfCircleCenters::areCompatible( Segment* parent , Segment* child
+          if ( distOfCircleCenters < _distMin ) return false;
+       
+       }
+-      catch ( InvalidParameter ){
++      catch ( const InvalidParameter& ){
+          
+          if (_saveValues) _map_name_value["Crit4_DistOfCircleCenters"] = 0.;
+          
+diff --git a/src/Criteria/Crit4_DistToExtrapolation.cc b/src/Criteria/Crit4_DistToExtrapolation.cc
+index b993f45..36f8907 100644
+--- a/src/Criteria/Crit4_DistToExtrapolation.cc
++++ b/src/Criteria/Crit4_DistToExtrapolation.cc
+@@ -90,7 +90,7 @@ bool Crit4_DistToExtrapolation::areCompatible( Segment* parent , Segment* child
+          if ( distNormed < _distMin ) return false;
+          
+       }
+-      catch ( InvalidParameter ){
++      catch ( const InvalidParameter& ){
+          
+          if (_saveValues) _map_name_value["Crit4_DistToExtrapolation"] = -1.;
+       
+diff --git a/src/Criteria/Crit4_PhiZRatioChange.cc b/src/Criteria/Crit4_PhiZRatioChange.cc
+index e6c4db2..b43ec91 100644
+--- a/src/Criteria/Crit4_PhiZRatioChange.cc
++++ b/src/Criteria/Crit4_PhiZRatioChange.cc
+@@ -90,7 +90,7 @@ bool Crit4_PhiZRatioChange::areCompatible( Segment* parent , Segment* child ) {
+          if ( ratioOfPhiZRatio < _changeMin ) return false;
+          
+       }
+-      catch ( InvalidParameter ){
++      catch ( const InvalidParameter& ){
+        
+          if (_saveValues) _map_name_value["Crit4_PhiZRatioChange"] = 1.;
+          
+diff --git a/src/Criteria/Crit4_RChange.cc b/src/Criteria/Crit4_RChange.cc
+index ea7e425..658e175 100644
+--- a/src/Criteria/Crit4_RChange.cc
++++ b/src/Criteria/Crit4_RChange.cc
+@@ -68,7 +68,7 @@ bool Crit4_RChange::areCompatible( Segment* parent , Segment* child ) {
+          if ( ratioOfR < _changeMin ) return false;
+          
+       }
+-      catch ( InvalidParameter ){
++      catch ( const InvalidParameter& ){
+          
+          if (_saveValues) _map_name_value["Crit4_RChange"] = 1.;
