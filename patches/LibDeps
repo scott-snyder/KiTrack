@@ -1,5 +1,5 @@
 Bottom: 8d02740b5fd6d2672f9e303f8afda9c965a0982f
-Top:    8d02740b5fd6d2672f9e303f8afda9c965a0982f
+Top:    3ae5f0678d4dcd78331e5b1a6a50750fc472ed1f
 Author: scott snyder <sss@karma>
 Date:   2020-02-12 11:09:10 -0500
 
@@ -8,4 +8,18 @@ LibDeps workaround
 
 ---
 
-
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index ad45b67..7c973e1 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -105,4 +105,6 @@ INCLUDE_DIRECTORIES( ${ILCTEST_INCLUDE_DIRS} )
+ DISPLAY_STD_VARIABLES()
+ 
+ # generate and install following configuration files
+-GENERATE_PACKAGE_CONFIGURATION_FILES( KiTrackConfig.cmake KiTrackConfigVersion.cmake KiTrackLibDeps.cmake )
++GENERATE_PACKAGE_CONFIGURATION_FILES( KiTrackConfig.cmake KiTrackConfigVersion.cmake )
++
++INSTALL (FILES ${PROJECT_SOURCE_DIR}/cmake/KiTrackLibDeps.cmake DESTINATION lib/cmake )
+diff --git a/cmake/KiTrackLibDeps.cmake b/cmake/KiTrackLibDeps.cmake
+new file mode 100644
+index 0000000..e69de29
